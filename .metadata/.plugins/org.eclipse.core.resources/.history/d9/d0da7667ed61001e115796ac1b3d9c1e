@@ -1,0 +1,21 @@
+package com.userService.controllor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.userService.modal.User;
+import com.userService.services.UserService;
+
+@RestController
+public class UserControllor {
+	Autowired
+	private UserService userService
+	
+	@GetMapping("/user/{uuid}")
+	public ResponseEntity<User> getUser(@PathVariable Long uuid){
+		
+	}
+}

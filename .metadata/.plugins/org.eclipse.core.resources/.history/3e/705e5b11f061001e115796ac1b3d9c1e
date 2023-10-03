@@ -1,0 +1,5 @@
+package com.contact.exceptions;
+
+public class InvalidUserException extends Exception {
+
+}

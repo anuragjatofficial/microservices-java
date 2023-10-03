@@ -1,0 +1,14 @@
+package com.userService.services;
+
+import com.userService.exceptions.InvalidUserException;
+import com.userService.modal.User;
+
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public User getUser(Long id) {
+		if(id==null)
+			throw new InvalidUserException("please provide the correct id");
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.userService.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.userService.exceptions.InvalidUserException;
+import com.userService.modal.User;
+import com.userService.repository.UserRepository;
+
+public class UserServiceImpl implements UserService{
+	@Autowired
+	private UserRepository userRepository;
+
+	@Override
+	public User getUser(Long id) {
+		if(id==null)
+			throw new InvalidUserException("please provide the correct id");
+		
+	}
+
+}
