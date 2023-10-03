@@ -1,5 +1,8 @@
 package com.userService.controllor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +26,12 @@ public class UserControllor {
 	
 	@GetMapping("/users/{uuid}")
 	public ResponseEntity<User> getUser(@PathVariable Long uuid){
-		return new ResponseEntity<User>(userService.getUser(uuid),HttpStatus.OK);
+		User user = userService.getUser(uuid);
+		user.setContacts(new ArrayList<>());
+		List contacts = this.restTemplate.getForObject("http://localhost:9002/contact/user/"+uuid, List.class);
+		user.setContacts(contacts);
+		System.out.println(contacts);
+		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 	
 	@PostMapping("/users")

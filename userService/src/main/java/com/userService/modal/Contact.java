@@ -1,5 +1,7 @@
 package com.userService.modal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,5 +23,6 @@ public class Contact {
 	private String email;
 	private String contactName;
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private User user;
 }

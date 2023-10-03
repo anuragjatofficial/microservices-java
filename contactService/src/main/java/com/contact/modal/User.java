@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +25,6 @@ public class User {
 	private Long uuid;
 	private String name;
 	private String phone;
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	@JsonIgnore
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	List<Contact> contacts  = new ArrayList<>();
 }
