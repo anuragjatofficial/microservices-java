@@ -27,8 +27,8 @@ public class UserControllor {
 	@GetMapping("/users/{uuid}")
 	public ResponseEntity<User> getUser(@PathVariable Long uuid){
 		User user = userService.getUser(uuid);
-		user.setContacts(new ArrayList<>());
-		List contacts = this.restTemplate.getForObject("http://localhost:9002/contact/user/"+uuid, List.class);
+		user.setContacts(new ArrayList<>()); // resetting the contact list to make sure our other api is working
+		List contacts = this.restTemplate.getForObject("http://contact-service/contact/user/"+uuid, List.class);
 		user.setContacts(contacts);
 		System.out.println(contacts);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
