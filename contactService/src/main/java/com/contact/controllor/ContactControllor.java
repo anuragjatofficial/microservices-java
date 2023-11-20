@@ -20,12 +20,12 @@ public class ContactControllor {
 	@Autowired
 	private ContactService contactService;
 
-	@GetMapping("/contact/user/{uuid}")
+	@GetMapping("/contact/users/{uuid}")
 	public ResponseEntity<List<Contact>> getContactsByUser(@PathVariable Long uuid) {
 		return new ResponseEntity<List<Contact>>(contactService.getContactsUser(uuid), HttpStatus.OK);
 	}
 
-	@PostMapping("/contact/user/{uuid}")
+	@PostMapping("/contact/users/{uuid}")
 	public ResponseEntity<Contact> addContacts(@PathVariable Long uuid ,@RequestBody Contact contact){
 		return new ResponseEntity<Contact>(contactService.addContact(uuid,contact),HttpStatus.ACCEPTED);
 	}
